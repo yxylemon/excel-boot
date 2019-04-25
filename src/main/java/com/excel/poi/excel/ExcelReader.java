@@ -238,7 +238,6 @@ public class ExcelReader extends DefaultHandler {
      * 根据c节点的s属性获取单元格样式,去styles.xml文件找相应样式
      *
      * @param cellType     xml中单元格格式属性
-     * @param cellStyleStr xml中样式属性
      */
     private void setCellType(String cellType) {
         if ("inlineStr".equals(cellType)) {

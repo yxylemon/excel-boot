@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.magic-core</groupId>
+    <groupId> com.github.yxylemon</groupId>
     <artifactId>excel-boot</artifactId>
     <version>2.0</version>
 
@@ -23,15 +23,15 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/programmeres/easy-poi</url>
-        <connection>https://github.com/programmeres/easy-poi.git</connection>
-        <developerConnection>https://github.com/programmeres/easy-poi</developerConnection>
+        <url>https://github.com/yxylemon/excel-boot</url>
+        <connection>https://github.com/yxylemon/excel-boot.git</connection>
+        <developerConnection>https://github.com/yxylemon/excel-boot</developerConnection>
     </scm>
     <developers>
         <developer>
-            <name>NingWei</name>
-            <email>magic_app@126.com</email>
-            <url>https://github.com/programmeres/easy-poi</url>
+            <name>yingxiaoyong</name>
+            <email>1327478407@qq.com</email>
+            <url>https://github.com/yxylemon/excel-boot</url>
         </developer>
     </developers>
 
@@ -90,22 +90,6 @@
                     <source>1.6</source>
                     <encoding>UTF-8</encoding>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <additionalparam>-Xdoclint:none</additionalparam>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

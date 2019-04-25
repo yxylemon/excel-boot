@@ -144,8 +144,6 @@ public class ExcelWriter {
     /**
      * 构建模板Excel
      *
-     * @param <R>
-     * @param <T>
      * @return
      */
     public SXSSFWorkbook generateTemplateWorkbook() {
@@ -229,10 +227,6 @@ public class ExcelWriter {
 
     /**
      * 自动适配中文单元格
-     *
-     * @param sheet
-     * @param cell
-     * @param columnIndex
      */
     private void sizeColumWidth(SXSSFSheet sheet, Integer columnSize) {
         if (openAutoColumWidth) {
@@ -247,7 +241,6 @@ public class ExcelWriter {
     /**
      * 自动适配中文单元格
      *
-     * @param sheet
      * @param cell
      * @param columnIndex
      */
