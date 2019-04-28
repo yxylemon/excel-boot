@@ -20,22 +20,12 @@ package com.excel.poi.common;
  * @author NingWei
  */
 public class StringUtil {
-    /**
-     * 判断字符串是否为空
-     *
-     * @param str
-     * @return
-     */
+
     public static boolean isBlank(Object str) {
         return str == null || "".equals(str.toString().trim()) || "null".equalsIgnoreCase(str.toString().trim());
     }
 
-    /**
-     * 格式化null为空
-     *
-     * @param str
-     * @return
-     */
+
     public static String convertNull(Object str) {
         if (str == null) {
             return "";
@@ -43,12 +33,7 @@ public class StringUtil {
         return str.toString();
     }
 
-    /**
-     * 格式化null为0
-     *
-     * @param str
-     * @return
-     */
+
     public static String convertNullTOZERO(Object str) {
         if (str == null || "".equals(str.toString().trim()) || "null".equalsIgnoreCase(str.toString().trim())) {
             return "0";

@@ -127,13 +127,7 @@ public class ExcelReader extends DefaultHandler {
         }
     }
 
-    /**
-     * 获取sharedStrings.xml文件的XMLReader对象
-     *
-     * @param sst
-     * @return
-     * @throws SAXException
-     */
+
     private XMLReader fetchSheetParser(SharedStringsTable sst) throws SAXException {
         XMLReader parser = XMLReaderFactory.createXMLReader("org.apache.xerces.parsers.SAXParser");
         this.mSharedStringsTable = sst;
@@ -141,14 +135,7 @@ public class ExcelReader extends DefaultHandler {
         return parser;
     }
 
-    /**
-     * 开始读取一个标签元素
-     *
-     * @param uri
-     * @param localName
-     * @param name
-     * @param attributes
-     */
+
     @Override
     public void startElement(String uri, String localName, String name, Attributes attributes) {
         if (Constant.CELL.equals(name)) {
@@ -163,26 +150,13 @@ public class ExcelReader extends DefaultHandler {
     }
 
 
-    /**
-     * 加载v标签中间的值
-     *
-     * @param chars
-     * @param start
-     * @param length
-     */
+
     @Override
     public void characters(char[] chars, int start, int length) {
         currentCellValue = currentCellValue.concat(new String(chars, start, length));
     }
 
-    /**
-     * 结束读取一个标签元素
-     *
-     * @param uri
-     * @param localName
-     * @param name
-     * @throws SAXException
-     */
+
     @Override
     public void endElement(String uri, String localName, String name) {
         if (Constant.CELL.equals(name)) {
@@ -233,12 +207,7 @@ public class ExcelReader extends DefaultHandler {
 
     }
 
-    /**
-     * 根据c节点的t属性获取单元格格式
-     * 根据c节点的s属性获取单元格样式,去styles.xml文件找相应样式
-     *
-     * @param cellType     xml中单元格格式属性
-     */
+
     private void setCellType(String cellType) {
         if ("inlineStr".equals(cellType)) {
             cellFormatStr = ExcelCellType.INLINESTR;
@@ -249,12 +218,7 @@ public class ExcelReader extends DefaultHandler {
         }
     }
 
-    /**
-     * 根据数据类型获取数据
-     *
-     * @param value
-     * @return
-     */
+
     private String getCellValue(String value) {
         switch (cellFormatStr) {
             case INLINESTR:
@@ -375,13 +339,7 @@ public class ExcelReader extends DefaultHandler {
                 .build();
     }
 
-    /**
-     * 计算两个单元格之间的单元格数目(同一行)
-     *
-     * @param refA
-     * @param refB
-     * @return
-     */
+
     public int countNullCell(String refA, String refB) {
         String xfdA = refA.replaceAll("\\d+", "");
         String xfdB = refB.replaceAll("\\d+", "");

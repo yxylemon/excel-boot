@@ -75,17 +75,7 @@ public class ExcelWriter {
         this.openAutoColumWidth = openAutoColumWidth;
     }
 
-    /**
-     * @param param
-     * @param exportFunction
-     * @param <P>
-     * @param <T>
-     * @return
-     * @throws InvocationTargetException
-     * @throws NoSuchMethodException
-     * @throws ParseException
-     * @throws IllegalAccessException
-     */
+
     public <P, T> SXSSFWorkbook generateWorkbook(P param, ExportFunction<P, T> exportFunction) throws Exception {
         SXSSFWorkbook workbook = new SXSSFWorkbook(rowAccessWindowSize);
         int sheetNo = 1;
@@ -141,11 +131,7 @@ public class ExcelWriter {
     }
 
 
-    /**
-     * 构建模板Excel
-     *
-     * @return
-     */
+
     public SXSSFWorkbook generateTemplateWorkbook() {
         SXSSFWorkbook workbook = new SXSSFWorkbook(rowAccessWindowSize);
 
@@ -162,19 +148,7 @@ public class ExcelWriter {
         return workbook;
     }
 
-    /**
-     * 构建多Sheet Excel
-     *
-     * @param param
-     * @param exportFunction
-     * @param <R>
-     * @param <T>
-     * @return
-     * @throws InvocationTargetException
-     * @throws NoSuchMethodException
-     * @throws ParseException
-     * @throws IllegalAccessException
-     */
+
     public <R, T> SXSSFWorkbook generateMultiSheetWorkbook(R param, ExportFunction<R, T> exportFunction) throws Exception {
         int pageNo = 1;
         int sheetNo = 1;
@@ -225,9 +199,7 @@ public class ExcelWriter {
         return workbook;
     }
 
-    /**
-     * 自动适配中文单元格
-     */
+
     private void sizeColumWidth(SXSSFSheet sheet, Integer columnSize) {
         if (openAutoColumWidth) {
             for (int j = 0; j < columnSize; j++) {
@@ -238,12 +210,7 @@ public class ExcelWriter {
         }
     }
 
-    /**
-     * 自动适配中文单元格
-     *
-     * @param cell
-     * @param columnIndex
-     */
+
     private void calculateColumWidth(SXSSFCell cell, Integer columnIndex) {
         if (openAutoColumWidth) {
             String cellValue = cell.getStringCellValue();
@@ -257,14 +224,7 @@ public class ExcelWriter {
         }
     }
 
-    /**
-     * 初始化第一行的属性
-     *
-     * @param workbook
-     * @param propertyList
-     * @param sheetName
-     * @return
-     */
+
     private SXSSFSheet generateHeader(SXSSFWorkbook workbook, List<ExcelPropertyEntity> propertyList, String sheetName) {
         SXSSFSheet sheet = workbook.createSheet(sheetName);
         SXSSFRow headerRow = sheet.createRow(0);
@@ -279,13 +239,7 @@ public class ExcelWriter {
         return sheet;
     }
 
-    /**
-     * 构造 除第一行以外的其他行的列值
-     *
-     * @param cell
-     * @param entity
-     * @param property
-     */
+
     private void buildCellValue(SXSSFCell cell, Object entity, ExcelPropertyEntity property) throws Exception {
         Field field = property.getFieldEntity();
         Object cellValue = field.get(entity);

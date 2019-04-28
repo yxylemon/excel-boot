@@ -49,51 +49,22 @@ public class ExcelBoot {
     private Integer recordCountPerSheet;
     private Boolean openAutoColumWidth;
 
-    /**
-     * 导入构造器
-     *
-     * @param inputStream
-     * @param excelClass
-     */
+
     protected ExcelBoot(InputStream inputStream, Class excelClass) {
         this(null, null, inputStream, null, excelClass, null, null, null, null);
     }
 
-    /**
-     * OutputStream导出构造器,一般用于导出到ftp服务器
-     *
-     * @param outputStream
-     * @param fileName
-     * @param excelClass
-     */
+
     protected ExcelBoot(OutputStream outputStream, String fileName, Class excelClass) {
         this(null, outputStream, null, fileName, excelClass, Constant.DEFAULT_PAGE_SIZE, Constant.DEFAULT_ROW_ACCESS_WINDOW_SIZE, Constant.DEFAULT_RECORD_COUNT_PEER_SHEET, Constant.OPEN_AUTO_COLUM_WIDTH);
     }
 
-    /**
-     * HttpServletResponse导出构造器,一般用于浏览器导出
-     *
-     * @param response
-     * @param fileName
-     * @param excelClass
-     */
+
     protected ExcelBoot(HttpServletResponse response, String fileName, Class excelClass) {
         this(response, null, null, fileName, excelClass, Constant.DEFAULT_PAGE_SIZE, Constant.DEFAULT_ROW_ACCESS_WINDOW_SIZE, Constant.DEFAULT_RECORD_COUNT_PEER_SHEET, Constant.OPEN_AUTO_COLUM_WIDTH);
     }
 
-    /**
-     * 构造器
-     *
-     * @param response
-     * @param outputStream
-     * @param inputStream
-     * @param fileName
-     * @param excelClass
-     * @param pageSize
-     * @param rowAccessWindowSize
-     * @param recordCountPerSheet
-     * @param openAutoColumWidth
-     */
+
     protected ExcelBoot(HttpServletResponse response, OutputStream outputStream, InputStream inputStream
             , String fileName, Class excelClass, Integer pageSize, Integer rowAccessWindowSize, Integer recordCountPerSheet, Boolean openAutoColumWidth) {
         this.httpServletResponse = response;
@@ -107,86 +78,36 @@ public class ExcelBoot {
         this.openAutoColumWidth = openAutoColumWidth;
     }
 
-    /**
-     * 通过HttpServletResponse,一般用于在浏览器中导出excel
-     *
-     * @param httpServletResponse
-     * @param fileName
-     * @param clazz
-     * @return
-     */
+
     public static ExcelBoot ExportBuilder(HttpServletResponse httpServletResponse, String fileName, Class clazz) {
         return new ExcelBoot(httpServletResponse, fileName, clazz);
     }
 
-    /**
-     * 通过OutputStream生成excel文件,一般用于异步导出大Excel文件到ftp服务器或本地路径
-     *
-     * @param outputStream
-     * @param fileName
-     * @param clazz
-     * @return
-     */
+
     public static ExcelBoot ExportBuilder(OutputStream outputStream, String fileName, Class clazz) {
         return new ExcelBoot(outputStream, fileName, clazz);
     }
 
-    /**
-     * HttpServletResponse 通用导出Excel构造器
-     *
-     * @param response
-     * @param fileName
-     * @param excelClass
-     * @param pageSize
-     * @param rowAccessWindowSize
-     * @param recordCountPerSheet
-     * @param openAutoColumWidth
-     * @return
-     */
+
     public static ExcelBoot ExportBuilder(HttpServletResponse response, String fileName, Class excelClass,
                                           Integer pageSize, Integer rowAccessWindowSize, Integer recordCountPerSheet, Boolean openAutoColumWidth) {
         return new ExcelBoot(response, null, null
                 , fileName, excelClass, pageSize, rowAccessWindowSize, recordCountPerSheet, openAutoColumWidth);
     }
 
-    /**
-     * OutputStream 通用导出Excel构造器
-     *
-     * @param outputStream
-     * @param fileName
-     * @param excelClass
-     * @param pageSize
-     * @param rowAccessWindowSize
-     * @param recordCountPerSheet
-     * @param openAutoColumWidth
-     * @return
-     */
+
     public static ExcelBoot ExportBuilder(OutputStream outputStream, String fileName, Class excelClass, Integer pageSize
             , Integer rowAccessWindowSize, Integer recordCountPerSheet, Boolean openAutoColumWidth) {
         return new ExcelBoot(null, outputStream, null
                 , fileName, excelClass, pageSize, rowAccessWindowSize, recordCountPerSheet, openAutoColumWidth);
     }
 
-    /**
-     * 导入Excel文件数据
-     *
-     * @param inputStreamm
-     * @param clazz
-     * @return
-     */
+
     public static ExcelBoot ImportBuilder(InputStream inputStreamm, Class clazz) {
         return new ExcelBoot(inputStreamm, clazz);
     }
 
-    /**
-     * 用于浏览器导出
-     *
-     * @param param
-     * @param exportFunction
-     * @param ExportFunction
-     * @param <R>
-     * @param <T>
-     */
+
     public <R, T> void exportResponse(R param, ExportFunction<R, T> exportFunction) {
         SXSSFWorkbook sxssfWorkbook = null;
         try {
@@ -207,15 +128,7 @@ public class ExcelBoot {
         }
     }
 
-    /**
-     * 通过OutputStream导出excel文件,一般用于异步导出大Excel文件到本地路径
-     *
-     * @param param
-     * @param ExportFunction
-     * @param exportFunction
-     * @param <R>
-     * @param <T>
-     */
+
     public <R, T> void exportStream(R param, ExportFunction<R, T> exportFunction) {
         OutputStream outputStream = null;
         try {
@@ -232,16 +145,7 @@ public class ExcelBoot {
         }
     }
 
-    /**
-     * 通过OutputStream导出excel文件,一般用于异步导出大Excel文件到ftp服务器
-     *
-     * @param param
-     * @param exportFunction
-     * @param ExportFunction
-     * @param <R>
-     * @param <T>
-     * @return
-     */
+
     public <R, T> OutputStream generateStream(R param, ExportFunction<R, T> exportFunction) throws IOException {
         SXSSFWorkbook sxssfWorkbook = null;
         try {
@@ -258,15 +162,7 @@ public class ExcelBoot {
         }
     }
 
-    /**
-     * 用于浏览器分sheet导出
-     *
-     * @param param
-     * @param exportFunction
-     * @param ExportFunction
-     * @param <R>
-     * @param <T>
-     */
+
     public <R, T> void exportMultiSheetResponse(R param, ExportFunction<R, T> exportFunction) {
         SXSSFWorkbook sxssfWorkbook = null;
         try {
@@ -285,15 +181,7 @@ public class ExcelBoot {
     }
 
 
-    /**
-     * 通过OutputStream分sheet导出excel文件,一般用于异步导出大Excel文件到本地路径
-     *
-     * @param param
-     * @param ExportFunction
-     * @param exportFunction
-     * @param <R>
-     * @param <T>
-     */
+
     public <R, T> void exportMultiSheetStream(R param, ExportFunction<R, T> exportFunction) {
         OutputStream outputStream = null;
         try {
@@ -311,16 +199,7 @@ public class ExcelBoot {
     }
 
 
-    /**
-     * 通过OutputStream分sheet导出excel文件,一般用于异步导出大Excel文件到ftp服务器
-     *
-     * @param param
-     * @param exportFunction
-     * @param ExportFunction
-     * @param <R>
-     * @param <T>
-     * @return
-     */
+
     public <R, T> OutputStream generateMultiSheetStream(R param, ExportFunction<R, T> exportFunction) throws IOException {
         SXSSFWorkbook sxssfWorkbook = null;
         try {
@@ -337,12 +216,7 @@ public class ExcelBoot {
         }
     }
 
-    /**
-     * 导出-导入模板
-     *
-     * @param data
-     * @throws Exception
-     */
+
     public void exportTemplate() {
         SXSSFWorkbook sxssfWorkbook = null;
         try {
@@ -366,15 +240,6 @@ public class ExcelBoot {
         }
     }
 
-    /**
-     * 导入excel全部sheet
-     *
-     * @param inputStream
-     * @param importFunction
-     * @throws OpenXML4JException
-     * @throws SAXException
-     * @throws IOException
-     */
     public void importExcel(ImportFunction importFunction) {
         try {
             if (importFunction == null) {
@@ -407,12 +272,7 @@ public class ExcelBoot {
         return excelWriter.generateMultiSheetWorkbook(param, exportFunction);
     }
 
-    /**
-     * 生成文件
-     *
-     * @param out
-     * @throws IOException
-     */
+
     private void write(OutputStream out) throws IOException {
         if (null != out) {
             out.flush();
@@ -420,14 +280,7 @@ public class ExcelBoot {
     }
 
 
-    /**
-     * 构建Excel服务器响应格式
-     *
-     * @param wb
-     * @param response
-     * @param filename
-     * @throws IOException
-     */
+
     private void download(SXSSFWorkbook wb, HttpServletResponse response, String filename) throws IOException {
         OutputStream out = response.getOutputStream();
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");

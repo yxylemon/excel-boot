@@ -30,14 +30,7 @@ import java.util.List;
  */
 public class ExcelMappingFactory {
 
-    /**
-     * 根据指定Excel实体获取导入Excel文件相关信息
-     *
-     * @param clazz
-     * @return
-     * @throws IllegalAccessException
-     * @throws InstantiationException
-     */
+
     public static ExcelEntity loadImportExcelClass(Class clazz) {
         List<ExcelPropertyEntity> propertyList = new ArrayList<ExcelPropertyEntity>();
 
@@ -67,14 +60,7 @@ public class ExcelMappingFactory {
 
     }
 
-    /**
-     * 根据指定Excel实体获取导出Excel文件相关信息
-     *
-     * @param clazz
-     * @return
-     * @throws IllegalAccessException
-     * @throws InstantiationException
-     */
+
     public static ExcelEntity loadExportExcelClass(Class<?> clazz, String fileName) {
         List<ExcelPropertyEntity> propertyList = new ArrayList<ExcelPropertyEntity>();
 
